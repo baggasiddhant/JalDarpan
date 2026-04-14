@@ -1,98 +1,94 @@
 # JALDARPAN
 
-This repository contains a machine learning-based forecasting system designed to predict water demand and optimize distribution in rural and urban regions. The system integrates time-series analysis with deep learning models to support sustainable and efficient water management.
+This project started as a water demand forecasting system, but a big part of the work ended up being around handling and working with structured data properly.
 
-## Table of Contents
+It focuses on predicting water usage using time-series data, while also dealing with how that data is stored, processed, and queried efficiently.
 
-- [Project Overview](#project-overview)  
-- [Objectives](#objectives)  
-- [Methodology](#methodology)  
-- [Data Sources and Preprocessing](#data-sources-and-preprocessing)  
-- [Model Architecture](#model-architecture)  
-- [Deployment](#deployment)  
-- [Results and Visualizations](#results-and-visualizations)  
-- [Future Work](#future-work)  
-- [References](#references)  
+---
 
 ## Project Overview
 
-Accurate forecasting of water demand is essential to ensure efficient and equitable distribution of water resources. This project focuses on leveraging historical, environmental, and real-time sensor data to predict water consumption patterns using machine learning techniques. It aims to address challenges related to water scarcity, operational inefficiencies, and environmental conservation.
+The goal was to predict water demand using historical and environmental data. But while building it, I had to deal with real issues like cleaning messy datasets, structuring data properly, and making sure it could be queried and processed without slowing things down.
 
-## Objectives
+So it’s not just a model project, it’s also about handling data in a practical way.
 
-The main goals of the project are:
+---
 
-1. Predict short-term and long-term water demand using historical and real-time data.
-2. Optimize water distribution networks by aligning supply with demand forecasts.
-3. Support sustainable resource use and reduce wastage.
-4. Increase resilience to climate-related disruptions.
-5. Minimize financial risks and operational costs.
-6. Foster trust through reliable and transparent predictions.
+## What I worked on (relevant parts)
 
-## Methodology
+- Worked with 5+ years of time-series data (water usage, rainfall, etc.)
+- Cleaned and structured datasets for consistent usage
+- Built preprocessing pipelines for handling missing and inconsistent data
+- Used SQL + Python to explore and analyze structured data
+- Designed data flow for training and prediction
+- Focused on keeping data processing efficient as dataset size increased
 
-The system uses Long Short-Term Memory (LSTM) networks to process sequential time-series data for demand forecasting. The process includes:
+---
 
-- Data preprocessing and normalization
-- Time-series windowing
-- Model training and evaluation
-- Real-time prediction dashboard deployment using Flask and Plotly
+## Data Handling
 
-## Data Sources and Preprocessing
+The data wasn’t clean or uniform, so a lot of effort went into fixing that.
 
-**Data Types Used:**
+### Data used:
+- Water consumption records  
+- Weather data (rainfall, humidity, temperature)  
+- Seasonal trends  
+- Some region-level data  
 
-- Historical water consumption records
-- Weather variables (rainfall, humidity, temperature)
-- Population and socio-economic data
-- Seasonal trends
-- IoT and sensor-based real-time water usage data
+### What I did:
+- Handled missing values (basic imputation)
+- Normalized data before feeding it into the model
+- Created features like seasonal patterns and demand ratios
+- Converted raw data into time-series sequences
 
-**Preprocessing Steps:**
+This part actually took more time than the model itself.
 
-- Handling missing values with imputation
-- Normalization using MinMaxScaler
-- Feature engineering (e.g., demand per capita, seasonal demand ratios)
-- Time-series formatting for sequence input
+---
 
-## Model Architecture
+## Model (brief)
 
-The predictive model is based on an LSTM neural network optimized for time-series data:
+Used an LSTM-based model for forecasting.
 
-- Two LSTM layers with 100 neurons each
-- Dense output layers
-- Optimizer: Adam
-- Loss function: Mean Squared Error (MSE)
-- Epochs: 100
-- Batch size: 16
+- 2 LSTM layers (100 units each)  
+- Adam optimizer  
+- MSE loss  
+- 80/20 train-test split  
 
-The model was trained on 80% of the data and tested on the remaining 20%.
+The model performed decently and predictions were close to actual trends.
 
-## Deployment
+---
 
-An interactive web dashboard is built using Flask and Plotly. It allows users to:
+## Backend / System Side
 
-- Upload new data
-- Visualize real-time predictions
-- Compare predicted vs actual consumption
+- Built a simple backend using Flask  
+- Handled data input and prediction requests  
+- Connected model outputs to a dashboard  
+- Made sure data flows from input → processing → prediction worked reliably  
 
-## Results and Visualizations
+---
 
-- Plots show close alignment between actual and predicted water demand values.
-- Training and validation loss graphs indicate model convergence.
-- Groundwater level trends, dam storage capacity, and seasonal availability are visualized for regions like Sehore, Madhya Pradesh.
+## What I learned 
+
+This project made me realize:
+
+- Data quality matters more than the model  
+- Structuring data properly makes everything easier later  
+- Querying and processing large datasets can become slow if not handled well  
+- Even small inefficiencies add up when data grows  
+
+It got me more interested in databases, query performance, and how data systems are designed in real applications.
+
+---
 
 ## Future Work
 
-- Incorporate additional features like temperature and population projections.
-- Experiment with alternative models (e.g., GRU, Transformer networks).
-- Deploy the system on cloud platforms (AWS, GCP) for scalability.
-- Perform hyperparameter optimization using automated search methods.
+- Move data handling to a proper database system (PostgreSQL)
+- Work on better query performance for larger datasets  
+- Try handling real-time data instead of static datasets  
+- Explore scaling this beyond a single-machine setup  
 
-## References
+---
 
-- Hochreiter and Schmidhuber, "Long Short-Term Memory", Neural Computation, 1997
-- Jason Brownlee, "Deep Learning for Time Series Forecasting"
-- François Chollet, "Deep Learning with Python", Manning Publications
-- TensorFlow, Keras, Scikit-learn, NumPy, Pandas, Matplotlib, Plotly
-- Data from Kaggle, IMD, CGWB, and Ministry of Jal Shakti
+## Tech Used
+
+Python, SQL, Pandas, NumPy, TensorFlow/Keras, Flask, Plotly
